@@ -1,4 +1,4 @@
-## Link Field ##
+# Link Field
 
 Works just like the RedirectorPage URL/Page field
 Provides and interface for creating an internal or external link. 
@@ -10,49 +10,57 @@ Also provides availability to store opening in a new tab
 Silverstripe 3+
 
 ## Usage ##
-# In your DataObject class, use the DB field "Link"
+### In your DataObject class, use the DB field "Link"
+```
 private static $db = array(
 	'LinkedPage' => 'Link'
 );
+```
 
-# In your forms (CMS only)
+### In your forms (CMS only)
+```
 $fields->push( LinkField::create($name,$title) );
+```
 
 setValue() expects either an array or serialized array of the following:
+```
 array(
 	'Location' => string ['Internal' | 'External'] (required)
 	'Internal' => int [SiteTree Page ID]
 	'External' => string [external URL | null],
 	'NewTab' => [bool]
 );
+```
 
-# In your templates
+### In your templates
+```
 <a href="$LinkedPage">Link Text</a>
+```
 
 ## DB class methods ##
 
-# URL
+### URL
 the raw entered URL for External, or $Page->Link() for internal
 
-# AbsoluteURL
+### AbsoluteURL
 an absolute URL for external (adds http://), or $Page->AbsoluteLink() for internal
 
-# LinkedPage
+### LinkedPage
 for internal only, returns the linked page SiteTree object
 
-# forTemplate
+### forTemplate
 returns URL()
 
-# IsExternal
+### IsExternal
 returns bool, if the link is external
 
-# Location
+### Location
 returns string, the location set as either Internal or External
 
-# Target
+### Target
 returns _blank or self for use in a target HTML attribute
 
-# TargetATT(force=false)
+### TargetATT(force=false)
 returns a full target attribute, for new tab only [target="_blank"]
 pass $force=true to return attribute for both new tab and same tab
 
