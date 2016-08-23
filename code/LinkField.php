@@ -14,6 +14,10 @@ class LinkField extends TextField
 {
 	protected $fieldHolderTemplate = 'LinkField';
 	
+	private static $url_handlers = array(
+		'$Action!/$ID' => '$Action'
+	);
+ 
 	private static $allowed_actions = array(
 		'tree'
 	);
