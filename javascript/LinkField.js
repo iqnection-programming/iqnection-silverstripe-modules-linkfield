@@ -1,14 +1,16 @@
 (function($){
 	"use strict";
 	$.entwine('ss',function($){
-		$(".field.link").entwine({
-			onmatch: function(){
-				var fieldName = $(this).attr('data-name');
-				updateLinkField(fieldName,$("input[name='"+fieldName+"[Location]']:checked").val());
-				$("input[name='"+fieldName+"[Location]']").change(function(){
+		$(document).ready(function(){
+			$(".field.link").entwine({
+				onmatch: function(){
+					var fieldName = $(this).data('name');
 					updateLinkField(fieldName,$("input[name='"+fieldName+"[Location]']:checked").val());
-				});
-			}
+					$("input[name='"+fieldName+"[Location]']").change(function(){
+						updateLinkField(fieldName,$("input[name='"+fieldName+"[Location]']:checked").val());
+					});
+				}
+			});
 		});
 		if (typeof updateLinkField !== 'function'){
 			var updateLinkField = function(fieldName,selected){
@@ -19,14 +21,14 @@
 					default:
 					case 'External':
 					{
-						internalField.slideUp();
-						externalField.slideDown();
+						internalField.hide();
+						externalField.show();
 						break;
 					}
 					case 'Internal':
 					{
-						internalField.slideDown();
-						externalField.slideUp();
+						internalField.show();
+						externalField.hide();
 						break;
 					}
 				}
