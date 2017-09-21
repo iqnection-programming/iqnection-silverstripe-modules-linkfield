@@ -107,7 +107,7 @@ class LinkField extends TextField
 		$this->_newTabField = $field;
 	}
 	
-	public function Field()
+	public function Field($properties = array())
 	{
 		Requirements::javascript(LINKFIELD_DIR."/javascript/LinkField.js");
 		$SelectField = $this->getLocationField();
