@@ -1,6 +1,11 @@
 <?php
 
-class Link extends Text
+namespace IQnection\ORM\FieldType;
+
+use SilverStripe\ORM\FieldType\DBText;
+use SilverStripe\CMS\Model\SiteTree;
+
+class DBLink extends DBText
 {
 	public function URL()
 	{
@@ -59,7 +64,7 @@ class Link extends Text
 		if ($title) $title = $this->name;
 		if ($name) $name = $this->name;
 		
-		$field = new LinkField($name,$title,$value,$form);
+		$field = LinkField::create($name,$title,$value,$form);
 		return $field;
 	}
 	

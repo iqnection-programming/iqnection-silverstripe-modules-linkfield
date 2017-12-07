@@ -1,0 +1,6 @@
+---
+Name: iqlinkfield
+---
+SilverStripe\Core\Injector\Injector:
+  Link:
+    class: IQnection\ORM\FieldType\DBLink

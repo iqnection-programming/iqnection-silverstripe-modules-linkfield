@@ -7,7 +7,10 @@ External provides a text field for entering the full URL
 Also provides availability to store opening in a new tab
 
 ## Requirements ##
-Silverstripe 3+
+Silverstripe 4+
+
+## Install ##
+composer require iqnection-modules/linkfield
 
 ## Usage ##
 ### In your DataObject class, use the DB field "Link"
@@ -19,7 +22,7 @@ private static $db = array(
 
 ### In your forms (CMS only)
 ```
-$fields->push( LinkField::create($name,$title) );
+$fields->push( IQnection\LinkField\LinkField::create($name,$title) );
 ```
 
 setValue() expects either an array or serialized array of the following:

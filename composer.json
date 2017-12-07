@@ -1,8 +1,9 @@
 {
 	"name": "iqnection-modules/linkfield",
-	"description": "SilverStripe 3 Link Field",
+	"description": "SilverStripe Link Field",
 	"type": "silverstripe-module",
 	"keywords": ["iqnection","pages"],
+	"license": "BSD-3-Clause",
 	"authors": [
 		{
 			"name": "IQnection",
@@ -10,7 +11,7 @@
 		}
 	],
 	"require": {
-		"silverstripe/framework": ">=3"
+		"silverstripe/framework": "4.*"
 	},
 	"extra": {
 		"installer-name": "iq-linkfield"

@@ -10,6 +10,14 @@
  *		[External] => string
  * );
  */
+
+namespace IQnection\Forms;
+
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\OptionsetField;
+use SilverStripe\View\Requirements;
+
 class LinkField extends TextField
 {
 	protected $fieldHolderTemplate = 'LinkField';
@@ -32,7 +40,7 @@ class LinkField extends TextField
 	{
 		if (!$this->_internalField)
 		{
-			$this->_internalField = LinkFieldTreeDropdownField::create($this->getName().'[Internal]','Internal Page','SiteTree',$this->getName());
+			$this->_internalField = LinkFieldTreeDropdownField::create($this->getName().'[Internal]','Internal Page',$this->getName());
 		}
 		return $this->_internalField;
 	}
@@ -133,15 +141,15 @@ class LinkField extends TextField
 			}
 		}
 		$NewTabField->setValue($defaults['NewTab']);
-		return $SelectField->FieldHolder().$InternalField->FieldHolder().$ExternalField->FieldHolder().$NewTabField->FieldHolder();
+		return $SelectField->FieldHolder().$InternalField->Field().$ExternalField->FieldHolder().$NewTabField->FieldHolder();
 	}
 	
-	public function tree( SS_HTTPRequest $request)
+	public function tree( \SilverStripe\Control\HTTPRequest $request)
 	{
 		return $this->getInternalField()->tree($request);
 	}
 	
-	public function setValue($values)
+	public function setValue($values,$data=null)
 	{
 		// set defaults
 		$defaults = array(
@@ -172,18 +180,3 @@ class LinkField extends TextField
 	}
 }
 
-class LinkFieldTreeDropdownField extends TreeDropdownField
-{
-	protected $link_name;
-	
-	public function __construct($name,$title=null,$sourceObject,$parentName)
-	{
-		$this->link_name = $parentName;
-		parent::__construct($name,$title,$sourceObject);
-	}
-	
-	public function Link($action = null)
-	{
-		return Controller::join_links($this->form->FormAction(), 'field/' . $this->link_name, $action);
-	}
-}
