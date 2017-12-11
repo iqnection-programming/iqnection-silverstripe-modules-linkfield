@@ -20,7 +20,7 @@ use SilverStripe\View\Requirements;
 
 class LinkField extends TextField
 {
-	protected $fieldHolderTemplate = 'LinkField';
+	protected $fieldHolderTemplate = 'IQnection\Forms\LinkField';
 	
 	private static $url_handlers = array(
 		'$Action!/$ID' => '$Action'
@@ -141,7 +141,7 @@ class LinkField extends TextField
 			}
 		}
 		$NewTabField->setValue($defaults['NewTab']);
-		return $SelectField->FieldHolder().$InternalField->Field().$ExternalField->FieldHolder().$NewTabField->FieldHolder();
+		return $SelectField->FieldHolder().$InternalField->FieldHolder().$ExternalField->FieldHolder().$NewTabField->FieldHolder();
 	}
 	
 	public function tree( \SilverStripe\Control\HTTPRequest $request)
