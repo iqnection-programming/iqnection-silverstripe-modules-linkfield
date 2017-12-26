@@ -1,0 +1,4 @@
+.field.link									{ padding:10px 0; border-bottom:1px solid #e5e8eb; }
+.field.link > .field						{ padding-bottom:0; }
+.field.link > .field:after					{ display:none; }
+

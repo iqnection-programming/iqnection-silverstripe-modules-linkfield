@@ -1,4 +1,4 @@
 <div id="$ID" class="link field" data-name="$Name">
-	<h4>$Title</h4>
+	<h2>$Title</h2>
 	$Field
 </div>

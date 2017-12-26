@@ -119,7 +119,9 @@ class LinkField extends TextField
 	{
 		Requirements::javascript(LINKFIELD_DIR."/javascript/LinkField.js");
 		$SelectField = $this->getLocationField();
-		$ExternalField = $this->getExternalField()->addExtraClass('linkfieldexternal')->setRightTitle('http://www.example.com')->setAttribute('placeholder','http://www.example.com');;
+		$ExternalField = $this->getExternalField()->addExtraClass('linkfieldexternal')
+			->setDescription('http://www.example.com')
+			->setAttribute('placeholder','http://www.example.com');;
 		$InternalField = $this->getInternalField()->setForm($this->getForm())->addExtraClass('linkfieldinternal');
 		$NewTabField = $this->getNewTabField();
 		$defaults = unserialize($this->value);
