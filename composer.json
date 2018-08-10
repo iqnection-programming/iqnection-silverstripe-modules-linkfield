@@ -1,7 +1,7 @@
 {
 	"name": "iqnection-modules/linkfield",
 	"description": "SilverStripe Link Field",
-	"type": "silverstripe-module",
+	"type": "silverstripe-vendormodule",
 	"keywords": ["iqnection","module"],
 	"license": "BSD-3-Clause",
 	"authors": [
