@@ -20,7 +20,7 @@ use SilverStripe\View\Requirements;
 
 class LinkField extends TextField
 {
-	protected $fieldHolderTemplate = 'IQnection\Forms\LinkField';
+	protected $fieldHolderTemplate = 'Forms\LinkField';
 	
 	private static $url_handlers = array(
 		'$Action!/$ID' => '$Action'
@@ -117,7 +117,7 @@ class LinkField extends TextField
 	
 	public function Field($properties = array())
 	{
-		Requirements::javascript(LINKFIELD_DIR."/javascript/LinkField.js");
+		Requirements::javascript("iqnection-modules/linkfield:javascript/LinkField.js");
 		$SelectField = $this->getLocationField();
 		$ExternalField = $this->getExternalField()->addExtraClass('linkfieldexternal')
 			->setDescription('http://www.example.com')
