@@ -4,6 +4,7 @@ namespace IQnection\ORM\FieldType;
 
 use SilverStripe\ORM\FieldType\DBText;
 use SilverStripe\CMS\Model\SiteTree;
+use SilverStripe\Control\Director;
 
 class DBLink extends DBText
 {
@@ -23,7 +24,22 @@ class DBLink extends DBText
 	{
 		if ($this->IsExternal())
 		{
-			return ($this->URL() && (!preg_match("#^[a-zA-Z]+://#",$this->URL()))) ? 'http://'.$this->URL() : $this->URL();
+			$url = $this->URL();
+			if ($url)
+			{
+				// were we give a complete URL?
+				if ( (preg_match("/^https?+:\/\//",$url)) || (preg_match("/^\/\//",$url)) )
+				{
+					return $url;
+				}
+				// were we given a domain?
+				if (preg_match('/^[^\/]+\.[^\/]+/',$url))
+				{
+					return '//'.$url;
+				}
+				// this must be a relative link
+				return Director::absoluteURL($url);
+			}
 		}
 		else
 		{
