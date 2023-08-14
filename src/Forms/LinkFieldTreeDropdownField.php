@@ -9,8 +9,12 @@ class LinkFieldTreeDropdownField extends TreeDropdownField
 {
 	protected $link_name;
 	
-	public function __construct($name,$title=null,$parentName)
+	public function __construct($name,$title,$parentName)
 	{
+		if(!$title) {
+			$title=null;
+		}
+		
 		$this->link_name = $parentName;
 		parent::__construct($name,$title,'SilverStripe\CMS\Model\SiteTree');
 	}
